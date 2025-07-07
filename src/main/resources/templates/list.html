@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee List</title>
+</head>
+<body>
+    <h2>Employees</h2>
+    <a href="/showNewEmployeeForm">Add New</a>
+    <table border="1">
+        <tr>
+            <th>ID</th><th>Name</th><th>Email</th><th>Dept</th><th>Actions</th>
+        </tr>
+        <tr th:each="emp : ${listEmployees}">
+            <td th:text="${emp.id}"></td>
+            <td th:text="${emp.name}"></td>
+            <td th:text="${emp.email}"></td>
+            <td th:text="${emp.department}"></td>
+            <td>
+                <a th:href="@{/showFormUpdate/{id}(id=${emp.id})}">Edit</a>
+                <a th:href="@{/deleteEmployee/{id}(id=${emp.id})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
